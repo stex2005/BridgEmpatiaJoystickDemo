@@ -18,6 +18,7 @@ import datetime
 import pygame
 import numpy
 import math
+import imutils
 
 
 import BridgeJoystickGUI
@@ -95,11 +96,9 @@ class CreatePlot3DExo(wx.Panel):
         self.dim_pan  = parent.GetSize()
         self.figure   = Figure(figsize=(self.dim_pan[0]*1.0/self.dpi,(self.dim_pan[1])*1.0/self.dpi), dpi=self.dpi)
         
-        sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
-        #col_norm      = (sysTextColour[0]*1.0/256, sysTextColour[1]*1.0/255, sysTextColour[2]*1.0/255)
-        col_norm      = (1.0, 1.0, 1.0)
-        self.figure.patch.set_facecolor(col_norm)
-
+        #sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
+        #col_norm      = (1.0, 1.0, 1.0)
+        #self.figure.patch.set_facecolor(col_norm)
 
         # Canvas
         self.canvas = FigureCanvas(parent, -1, self.figure)
@@ -141,10 +140,9 @@ class CreatePlot2DExo(wx.Panel):
         self.dim_pan  = parent.GetSize()
         self.figure   = Figure(figsize=(self.dim_pan[0]*1.0/self.dpi,(self.dim_pan[1])*1.0/self.dpi), dpi=self.dpi)
         
-        sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
-        col_norm      = (sysTextColour[0]*1.0/255, sysTextColour[1]*1.0/255, sysTextColour[2]*1.0/255)
-        col_norm      = (1.0, 1.0, 1.0)
-        self.figure.patch.set_facecolor(col_norm)
+        #sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
+        #col_norm      = (sysTextColour[0]*1.0/255, sysTextColour[1]*1.0/255, sysTextColour[2]*1.0/255)
+        #self.figure.patch.set_facecolor(col_norm)
 
         # Canvas
         self.canvas = FigureCanvas(parent, -1, self.figure)
@@ -289,7 +287,7 @@ class MainWindow(BridgeJoystickGUI.BridgeJoystickWin):
         self.Bridge.ControlThread.start()      
 
     def disableCtrl_command(self, events):
-        print "* Exit control..."
+        print "* Exiting control..."
         self.Conf.CtrlEnable = False
 
         # Get active threads
@@ -345,6 +343,29 @@ class MainWindow(BridgeJoystickGUI.BridgeJoystickWin):
 
         ''' Define control threads '''
         #self.Bridge.ControlThread = Thread_ControlClass(self.Bridge, self.Conf, self.Coord, Debug = False)
+
+    def exit(self,event):
+        " Kill all the threads except MainThread "
+
+        " Get active threads "
+        threads_list = threading.enumerate()
+        print threads_list
+
+        print "* Terminating Threads ..."
+        for i in range(0, len(threads_list)):
+            th = threads_list[i]
+            if th.name != "MainThread":
+                try:
+                    th.terminate()
+                    th.join()
+                except Exception, e:
+                    print "# Error terminating " + th.name + " | " + str(e)
+        try:
+            self.Close()
+            print "Closed"
+        except Exception, e:
+            print "# Error closing | " + str(e)
+
 
 
     def close(self, event):

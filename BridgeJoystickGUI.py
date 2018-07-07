@@ -17,9 +17,9 @@ import wx.xrc
 class BridgeJoystickWin ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"BridgeJoystick V0.1", pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"BridgeJoystick V0.1", pos = wx.DefaultPosition, size = wx.Size( 1002,536 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
-		self.SetSizeHintsSz( wx.Size( 1002,480 ), wx.Size( -1,-1 ) )
+		self.SetSizeHintsSz( wx.Size( 1002,-1 ), wx.Size( -1,-1 ) )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 		
 		self.m_statusBar1 = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
@@ -53,24 +53,20 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		bSizer4 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.show_terminal = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE )
-		self.show_terminal.SetForegroundColour( wx.Colour( 255, 255, 255 ) )
-		self.show_terminal.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
-		
-		bSizer4.Add( self.show_terminal, 1, wx.ALL|wx.EXPAND, 5 )
+		bSizer7 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer41 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"Mode", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText1.Wrap( -1 )
-		bSizer41.Add( self.m_staticText1, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+		bSizer41.Add( self.m_staticText1, 1, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
 		
 		self.lbl_Mode = wx.StaticText( self, wx.ID_ANY, u"○", wx.DefaultPosition, wx.Size( -1,-1 ), wx.ST_NO_AUTORESIZE )
 		self.lbl_Mode.Wrap( -1 )
 		self.lbl_Mode.SetFont( wx.Font( 18, 70, 90, 90, False, wx.EmptyString ) )
 		self.lbl_Mode.SetForegroundColour( wx.Colour( 0, 255, 128 ) )
 		
-		bSizer41.Add( self.lbl_Mode, 0, wx.ALL, 5 )
+		bSizer41.Add( self.lbl_Mode, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"Save Position", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText3.Wrap( -1 )
@@ -81,7 +77,7 @@ class BridgeJoystickWin ( wx.Frame ):
 		self.lbl_savePos.SetFont( wx.Font( 18, 70, 90, 90, False, wx.EmptyString ) )
 		self.lbl_savePos.SetForegroundColour( wx.Colour( 128, 255, 128 ) )
 		
-		bSizer41.Add( self.lbl_savePos, 0, wx.ALL, 5 )
+		bSizer41.Add( self.lbl_savePos, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, u"Go To Saved Position", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText5.Wrap( -1 )
@@ -92,47 +88,81 @@ class BridgeJoystickWin ( wx.Frame ):
 		self.lbl_Goto.SetFont( wx.Font( 18, 70, 90, 90, False, wx.EmptyString ) )
 		self.lbl_Goto.SetForegroundColour( wx.Colour( 128, 255, 128 ) )
 		
-		bSizer41.Add( self.lbl_Goto, 0, wx.ALL, 5 )
+		bSizer41.Add( self.lbl_Goto, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		
-		bSizer4.Add( bSizer41, 0, wx.EXPAND, 5 )
+		bSizer7.Add( bSizer41, 1, wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		bSizer5 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		self.lbl_alarm = wx.StaticText( self, wx.ID_ANY, u"ALARM", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.lbl_alarm = wx.StaticText( self, wx.ID_ANY, u"Alarm", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
 		self.lbl_alarm.Wrap( -1 )
 		self.lbl_alarm.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 		
-		bSizer5.Add( self.lbl_alarm, 1, wx.ALL, 5 )
+		bSizer5.Add( self.lbl_alarm, 1, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		
-		bSizer4.Add( bSizer5, 0, wx.EXPAND, 5 )
+		bSizer7.Add( bSizer5, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer4.Add( bSizer7, 1, wx.EXPAND, 5 )
+		
+		sbSizer21 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"Activities" ), wx.HORIZONTAL )
+		
+		
+		sbSizer21.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		self.button_loadPatient = wx.Button( sbSizer21.GetStaticBox(), wx.ID_ANY, u"Settings", wx.DefaultPosition, wx.DefaultSize, 0 )
+		sbSizer21.Add( self.button_loadPatient, 0, wx.ALL, 5 )
+		
+		self.button_StartCtrl = wx.Button( sbSizer21.GetStaticBox(), wx.ID_ANY, u"Ctrl", wx.DefaultPosition, wx.DefaultSize, 0 )
+		sbSizer21.Add( self.button_StartCtrl, 0, wx.ALL, 5 )
+		
+		self.butt_StopControl = wx.Button( sbSizer21.GetStaticBox(), wx.ID_ANY, u"Stop", wx.DefaultPosition, wx.DefaultSize, 0 )
+		sbSizer21.Add( self.butt_StopControl, 0, wx.ALL, 5 )
+		
+		
+		sbSizer21.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		bSizer4.Add( sbSizer21, 0, wx.EXPAND, 5 )
 		
 		bSizer3 = wx.BoxSizer( wx.HORIZONTAL )
-		
-		self.button_loadPatient = wx.Button( self, wx.ID_ANY, u"Settings", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer3.Add( self.button_loadPatient, 0, wx.ALL, 5 )
-		
-		
-		bSizer3.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
-		
-		self.button_StartCtrl = wx.Button( self, wx.ID_ANY, u"Ctrl", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer3.Add( self.button_StartCtrl, 0, wx.ALL, 5 )
-		
-		
-		bSizer3.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
-		
-		self.butt_StopControl = wx.Button( self, wx.ID_ANY, u"Stop", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer3.Add( self.butt_StopControl, 0, wx.ALL, 5 )
 		
 		
 		bSizer4.Add( bSizer3, 0, wx.EXPAND, 5 )
 		
+		bSizer8 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.show_terminal = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE )
+		self.show_terminal.SetForegroundColour( wx.Colour( 255, 255, 255 ) )
+		self.show_terminal.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
+		
+		bSizer8.Add( self.show_terminal, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		
+		bSizer4.Add( bSizer8, 1, wx.EXPAND|wx.ALL, 5 )
+		
 		
 		bSizer2.Add( bSizer4, 1, wx.EXPAND, 5 )
 		
+		bSizer6 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_panel5 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,100 ), wx.TAB_TRAVERSAL )
+		self.m_panel5.SetMaxSize( wx.Size( -1,100 ) )
+		
+		bSizer6.Add( self.m_panel5, 1, wx.EXPAND |wx.ALL, 5 )
+		
 		self.exo3d_container = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizer2.Add( self.exo3d_container, 1, wx.ALL|wx.EXPAND, 5 )
+		bSizer6.Add( self.exo3d_container, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		self.m_panel6 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,100 ), wx.TAB_TRAVERSAL )
+		self.m_panel6.SetMaxSize( wx.Size( -1,100 ) )
+		
+		bSizer6.Add( self.m_panel6, 1, wx.EXPAND |wx.ALL, 5 )
+		
+		
+		bSizer2.Add( bSizer6, 1, wx.EXPAND, 5 )
 		
 		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"2D view" ), wx.VERTICAL )
 		
@@ -151,7 +181,6 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.SetSizer( bSizer2 )
 		self.Layout()
-		bSizer2.Fit( self )
 		
 		self.Centre( wx.BOTH )
 		
