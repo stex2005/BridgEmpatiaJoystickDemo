@@ -20,7 +20,7 @@ import numpy
 import math
 
 
-import BRIDGEVocal_GUI
+import BridgeJoystickGUI
 
 from BridgeConf import BridgeConfClass, BridgeClass, BridgeCoordClass
 from BridgeCtrl import Thread_ControlClass
@@ -174,10 +174,10 @@ class CreatePlot2DExo(wx.Panel):
 
 ###############################################################################
 # GUI CLASS
-class MainWindow(BRIDGEVocal_GUI.BridgeVocalWin):
+class MainWindow(BridgeJoystickGUI.BridgeJoystickWin):
     def __init__(self, parent):
 
-        BRIDGEVocal_GUI.BridgeVocalWin.__init__(self,parent)
+        BridgeJoystickGUI.BridgeJoystickWin.__init__(self,parent)
 
         " Redirect output to ctrl text "
         redir      			= RedirectText(self.show_terminal)

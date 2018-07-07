@@ -17,9 +17,9 @@ import wx.xrc
 class BridgeJoystickWin ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Bridge Joystick V0.1", pos = wx.DefaultPosition, size = wx.Size( 1002,-1 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"BridgeJoystick V0.1", pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
-		self.SetSizeHintsSz( wx.Size( 1002,-1 ), wx.Size( -1,-1 ) )
+		self.SetSizeHintsSz( wx.Size( 1002,480 ), wx.Size( -1,-1 ) )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 		
 		self.m_statusBar1 = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
@@ -131,13 +131,8 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		bSizer2.Add( bSizer4, 1, wx.EXPAND, 5 )
 		
-		bSizer6 = wx.BoxSizer( wx.VERTICAL )
-		
 		self.exo3d_container = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizer6.Add( self.exo3d_container, 1, wx.ALL|wx.EXPAND, 5 )
-		
-		
-		bSizer2.Add( bSizer6, 1, wx.EXPAND, 5 )
+		bSizer2.Add( self.exo3d_container, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"2D view" ), wx.VERTICAL )
 		
@@ -156,6 +151,7 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.SetSizer( bSizer2 )
 		self.Layout()
+		bSizer2.Fit( self )
 		
 		self.Centre( wx.BOTH )
 		
