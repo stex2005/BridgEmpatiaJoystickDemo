@@ -9,7 +9,7 @@ import numpy
 from BridgeConf import BridgeConfClass, BridgeClass, BridgeCoordClass
 import scipy.io as spio
 import datetime
-import winsound # per audio feedback
+import winsound
 
 global file_EndEff0
 file_EndEff0 = []
@@ -147,9 +147,8 @@ class Thread_ControlClass(threading.Thread):
                                     self.Coord.p0[0] = 0.0
                                     self.Coord.p0[1] = 0.0
 
-                            #print self.Coord.p0
-
                         elif event.type == pygame.JOYBUTTONDOWN or event.type == pygame.JOYBUTTONUP:
+                            winsound.Beep(880, 500)
                             self.Conf.Joystick.Mode                 = joystick.get_button(1)
                             self.Conf.Joystick.SavePosition         = joystick.get_button(2)
                             self.Conf.Joystick.GotoSavedPosition    = joystick.get_button(3)
