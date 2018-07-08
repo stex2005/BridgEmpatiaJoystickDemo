@@ -17,9 +17,9 @@ import wx.xrc
 class BridgeJoystickWin ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"BridgeJoystick V0.1", pos = wx.DefaultPosition, size = wx.Size( 1002,536 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"BridgeJoystick V0.1", pos = wx.DefaultPosition, size = wx.Size( -1,-1 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
-		self.SetSizeHintsSz( wx.Size( 1002,-1 ), wx.Size( -1,-1 ) )
+		self.SetSizeHintsSz( wx.Size( 1002,536 ), wx.Size( -1,-1 ) )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 		
 		self.m_statusBar1 = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
@@ -57,9 +57,12 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		bSizer41 = wx.BoxSizer( wx.HORIZONTAL )
 		
+		
+		bSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
 		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"Mode", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText1.Wrap( -1 )
-		bSizer41.Add( self.m_staticText1, 1, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+		bSizer41.Add( self.m_staticText1, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
 		
 		self.lbl_Mode = wx.StaticText( self, wx.ID_ANY, u"○", wx.DefaultPosition, wx.Size( -1,-1 ), wx.ST_NO_AUTORESIZE )
 		self.lbl_Mode.Wrap( -1 )
@@ -67,6 +70,9 @@ class BridgeJoystickWin ( wx.Frame ):
 		self.lbl_Mode.SetForegroundColour( wx.Colour( 0, 255, 128 ) )
 		
 		bSizer41.Add( self.lbl_Mode, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		
+		bSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"Save Position", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText3.Wrap( -1 )
@@ -79,6 +85,9 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		bSizer41.Add( self.lbl_savePos, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
+		
+		bSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
 		self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, u"Go To Saved Position", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText5.Wrap( -1 )
 		bSizer41.Add( self.m_staticText5, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
@@ -89,6 +98,9 @@ class BridgeJoystickWin ( wx.Frame ):
 		self.lbl_Goto.SetForegroundColour( wx.Colour( 128, 255, 128 ) )
 		
 		bSizer41.Add( self.lbl_Goto, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		
+		bSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		
 		bSizer7.Add( bSizer41, 1, wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
@@ -167,13 +179,13 @@ class BridgeJoystickWin ( wx.Frame ):
 		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"2D view" ), wx.VERTICAL )
 		
 		self.exo_piano1 = wx.Panel( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		sbSizer2.Add( self.exo_piano1, 1, wx.EXPAND |wx.ALL, 5 )
+		sbSizer2.Add( self.exo_piano1, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		self.exo_piano2 = wx.Panel( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		sbSizer2.Add( self.exo_piano2, 1, wx.EXPAND |wx.ALL, 5 )
+		sbSizer2.Add( self.exo_piano2, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		self.exo_piano3 = wx.Panel( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		sbSizer2.Add( self.exo_piano3, 1, wx.EXPAND |wx.ALL, 5 )
+		sbSizer2.Add( self.exo_piano3, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
 		bSizer2.Add( sbSizer2, 1, wx.EXPAND, 5 )
@@ -181,6 +193,7 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.SetSizer( bSizer2 )
 		self.Layout()
+		bSizer2.Fit( self )
 		
 		self.Centre( wx.BOTH )
 		

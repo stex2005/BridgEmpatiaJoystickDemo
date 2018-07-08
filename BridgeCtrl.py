@@ -131,7 +131,7 @@ class Thread_ControlClass(threading.Thread):
 
                                 if self.Conf.Joystick.Mode == 0:
                                     if i == 0:
-                                        self.Coord.p0[i] = axis * 1.2
+                                        self.Coord.p0[i] = -axis * 1.2
                                     else:
                                         self.Coord.p0[i] = -axis * 1.2
 

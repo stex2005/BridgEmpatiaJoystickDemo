@@ -63,13 +63,14 @@ class CreatePlotJoystick(wx.Panel):
         self.dim_pan  = parent.GetSize()
         self.figure   = Figure(figsize=(self.dim_pan[0]*1.0/self.dpi,(self.dim_pan[1])*1.0/self.dpi), dpi=self.dpi)
         
-        sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
-        col_norm      = (sysTextColour[0]*1.0/255, sysTextColour[1]*1.0/255, sysTextColour[2]*1.0/255)
-        self.figure.patch.set_facecolor(col_norm)
+        #sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
+        #col_norm      = (sysTextColour[0]*1.0/255, sysTextColour[1]*1.0/255, sysTextColour[2]*1.0/255)
+        #self.figure.patch.set_facecolor(col_norm)
 
         # Canvas
         self.canvas = FigureCanvas(parent, -1, self.figure)
         sizer1 = wx.BoxSizer(wx.VERTICAL)
+        sizer1.Add(self.canvas, 1, wx.ALL | wx.EXPAND)
 
 
         self.ax = self.figure.add_subplot(1, 1, 1)
@@ -130,7 +131,7 @@ class CreatePlot3DExo(wx.Panel):
 #PLOT 2D EXO
 class CreatePlot2DExo(wx.Panel):
 
-    def __init__(self, parent, xlabel, ylabel):
+    def __init__(self,parent):
 
         wx.Panel.__init__(self, parent, -1)
 
@@ -151,10 +152,6 @@ class CreatePlot2DExo(wx.Panel):
 
         self.ax = self.figure.add_subplot(1, 1, 1)
         self.ax.axis('equal')
-
-        " Set labels "
-        self.ax.set_xlabel(xlabel)
-        self.ax.set_ylabel(ylabel)
 
         self.ax.set_ylim(-(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
         self.ax.set_xlim(-(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
@@ -193,13 +190,17 @@ class MainWindow(BridgeJoystickGUI.BridgeJoystickWin):
         self.ani 			= animation.FuncAnimation(self.exo3d_plot.figure, self.animate, fargs=[],interval = 500)
 
         " Plot exo 2D "
-        self.exo2d_plot1    = CreatePlot2DExo(self.exo_piano1, 'SINISTRA - DESTRA', 'AVANTI - INDIETRO')
+        self.exo2d_plot1    = CreatePlot2DExo(self.exo_piano1)
+        self.exo2d_plot1.ax.set_xlabel('SINISTRA - DESTRA')
+        self.exo2d_plot1.ax.set_ylabel('AVANTI - INDIETRO')
         self.ani2d_plot1    = animation.FuncAnimation(self.exo2d_plot1.figure, self.animate_plot2D1, fargs=[],interval = 500)
-        
-        self.exo2d_plot2    = CreatePlot2DExo(self.exo_piano2, 'SINISTRA - DESTRA', 'SCENDERE - SALIRE')
+        self.exo2d_plot2    = CreatePlot2DExo(self.exo_piano2)
+        self.exo2d_plot2.ax.set_ylabel('SCENDERE - SALIRE')
+        self.exo2d_plot2.ax.set_xlabel('SINISTRA - DESTRA')
         self.ani2d_plot2    = animation.FuncAnimation(self.exo2d_plot2.figure, self.animate_plot2D2, fargs=[],interval = 500)
-
-        self.exo2d_plot3    = CreatePlot2DExo(self.exo_piano3, 'INDIETRO - AVANTI', 'SCENDERE - SALIRE')
+        self.exo2d_plot3    = CreatePlot2DExo(self.exo_piano3)
+        self.exo2d_plot3.ax.set_xlabel('INDIETRO - AVANTI')
+        self.exo2d_plot3.ax.set_ylabel('SCENDERE - SALIRE')
         self.ani2d_plot3    = animation.FuncAnimation(self.exo2d_plot3.figure, self.animate_plot2D3, fargs=[],interval = 500)
 
 
@@ -365,14 +366,6 @@ class MainWindow(BridgeJoystickGUI.BridgeJoystickWin):
             print "Closed"
         except Exception, e:
             print "# Error closing | " + str(e)
-
-
-
-    def close(self, event):
-        print 'Hasta la vista!'
-
-        self.disableCtrl_command(None)
-        self.Destroy()
 
 
 # STDOUTPUT REDIRECT
