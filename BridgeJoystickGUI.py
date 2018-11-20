@@ -62,11 +62,14 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"Mode", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText1.Wrap( -1 )
+		self.m_staticText1.SetFont( wx.Font( 24, 70, 90, 90, False, wx.EmptyString ) )
+
 		bSizer41.Add( self.m_staticText1, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
 		
 		self.lbl_Mode = wx.StaticText( self, wx.ID_ANY, u"○", wx.DefaultPosition, wx.Size( -1,-1 ), wx.ST_NO_AUTORESIZE )
 		self.lbl_Mode.Wrap( -1 )
 		self.lbl_Mode.SetFont( wx.Font( 18, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
+		self.lbl_Mode.SetFont( wx.Font( 24, 70, 90, 90, False, wx.EmptyString ) )
 		self.lbl_Mode.SetForegroundColour( wx.Colour( 0, 255, 128 ) )
 		
 		bSizer41.Add( self.lbl_Mode, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )

@@ -139,7 +139,9 @@ class CreatePlot2DExo(wx.Panel):
 
         self.dpi      = 45
         self.dim_pan  = parent.GetSize()
-        self.figure   = Figure(figsize=(self.dim_pan[0]*1.0/self.dpi,(self.dim_pan[1])*1.0/self.dpi), dpi=self.dpi)
+        #self.figure   = Figure(figsize=(self.dim_pan[0]*1.0/self.dpi,(self.dim_pan[1])*1.0/self.dpi), dpi=self.dpi)
+        self.figure   = Figure(dpi=self.dpi)
+
         
         #sysTextColour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_MENU) #colore sfondo come finestra
         #col_norm      = (sysTextColour[0]*1.0/255, sysTextColour[1]*1.0/255, sysTextColour[2]*1.0/255)
@@ -153,8 +155,8 @@ class CreatePlot2DExo(wx.Panel):
         self.ax = self.figure.add_subplot(1, 1, 1)
         self.ax.axis('equal')
 
-        self.ax.set_ylim(-(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
-        self.ax.set_xlim(-(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
+        self.ax.set_ylim(1.5*(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
+        self.ax.set_xlim(1.5*(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
 
         " Set virtual exo "
         marker_style = dict(linestyle='-', color=[0.2, 0.2, 0.2], markersize=20)
