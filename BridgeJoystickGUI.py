@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- 
 
 ###########################################################################
-## Python code generated with wxFormBuilder (version Jun 17 2015)
+## Python code generated with wxFormBuilder (version Dec 21 2016)
 ## http://www.wxformbuilder.org/
 ##
 ## PLEASE DO "NOT" EDIT THIS FILE!
@@ -66,7 +66,7 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.lbl_Mode = wx.StaticText( self, wx.ID_ANY, u"○", wx.DefaultPosition, wx.Size( -1,-1 ), wx.ST_NO_AUTORESIZE )
 		self.lbl_Mode.Wrap( -1 )
-		self.lbl_Mode.SetFont( wx.Font( 18, 70, 90, 90, False, wx.EmptyString ) )
+		self.lbl_Mode.SetFont( wx.Font( 18, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
 		self.lbl_Mode.SetForegroundColour( wx.Colour( 0, 255, 128 ) )
 		
 		bSizer41.Add( self.lbl_Mode, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
@@ -80,7 +80,7 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.lbl_savePos = wx.StaticText( self, wx.ID_ANY, u"○", wx.DefaultPosition, wx.DefaultSize, wx.ST_NO_AUTORESIZE )
 		self.lbl_savePos.Wrap( -1 )
-		self.lbl_savePos.SetFont( wx.Font( 18, 70, 90, 90, False, wx.EmptyString ) )
+		self.lbl_savePos.SetFont( wx.Font( 18, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
 		self.lbl_savePos.SetForegroundColour( wx.Colour( 128, 255, 128 ) )
 		
 		bSizer41.Add( self.lbl_savePos, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
@@ -94,7 +94,7 @@ class BridgeJoystickWin ( wx.Frame ):
 		
 		self.lbl_Goto = wx.StaticText( self, wx.ID_ANY, u"○", wx.DefaultPosition, wx.DefaultSize, wx.ST_NO_AUTORESIZE )
 		self.lbl_Goto.Wrap( -1 )
-		self.lbl_Goto.SetFont( wx.Font( 18, 70, 90, 90, False, wx.EmptyString ) )
+		self.lbl_Goto.SetFont( wx.Font( 18, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, wx.EmptyString ) )
 		self.lbl_Goto.SetForegroundColour( wx.Colour( 128, 255, 128 ) )
 		
 		bSizer41.Add( self.lbl_Goto, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )

@@ -108,11 +108,11 @@ class CreatePlot3DExo(wx.Panel):
 
 
         self.ax = self.figure.add_subplot(1, 1, 1, projection='3d')
-        self.ax.axis('equal')
+        #self.ax.axis('equal')
 
-        self.ax.set_xlim3d(-0.1, (self.Conf.l1+self.Conf.l2+self.Conf.l3))
-        self.ax.set_ylim3d(-(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
-        self.ax.set_zlim3d(-(self.Conf.l1+self.Conf.l2+self.Conf.l3), (self.Conf.l1+self.Conf.l2+self.Conf.l3))
+        self.ax.set_xlim3d(-0.5, (self.Conf.l1+self.Conf.l2+self.Conf.l3))
+        self.ax.set_ylim3d(-1.5*(self.Conf.l1+self.Conf.l2+self.Conf.l3), 1.5*(self.Conf.l1+self.Conf.l2+self.Conf.l3))
+        self.ax.set_zlim3d(-1.5*(self.Conf.l1+self.Conf.l2+self.Conf.l3), 1.5*(self.Conf.l1+self.Conf.l2+self.Conf.l3))
         # self.ax.view_init(elev=10., azim=20)
         self.ax.view_init(elev=30, azim=-20)
 
