@@ -83,8 +83,6 @@ class Thread_ControlClass(threading.Thread):
     def run(self):
 
         self.running = True
-        self.loop = len(self.p0_file)
-        self.loop_count = 0
 
         if self.running:
             
