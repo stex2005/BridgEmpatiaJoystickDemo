@@ -289,7 +289,7 @@
                                         <object class="sizeritem" expanded="1">
                                             <property name="border">5</property>
                                             <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL</property>
-                                            <property name="proportion">1</property>
+                                            <property name="proportion">0</property>
                                             <object class="wxStaticText" expanded="1">
                                                 <property name="BottomDockable">1</property>
                                                 <property name="LeftDockable">1</property>
@@ -892,6 +892,7 @@
                                 <property name="minimum_size"></property>
                                 <property name="name">sbSizer21</property>
                                 <property name="orient">wxHORIZONTAL</property>
+                                <property name="parent">1</property>
                                 <property name="permission">none</property>
                                 <event name="OnUpdateUI"></event>
                                 <object class="sizeritem" expanded="1">
@@ -1556,6 +1557,7 @@
                         <property name="minimum_size"></property>
                         <property name="name">sbSizer2</property>
                         <property name="orient">wxVERTICAL</property>
+                        <property name="parent">1</property>
                         <property name="permission">none</property>
                         <event name="OnUpdateUI"></event>
                         <object class="sizeritem" expanded="1">
