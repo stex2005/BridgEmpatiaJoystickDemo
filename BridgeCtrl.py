@@ -66,8 +66,6 @@ class Thread_ControlClass(threading.Thread):
 
         self.GoToSavedPosMainTrigger    = False
 
-        self.p0_file        = spio.loadmat('p0.mat')['p0']
-
         # CULO: erano in connect command
         if self.Conf.CtrlInput == 'joystick':
             try:
@@ -85,8 +83,6 @@ class Thread_ControlClass(threading.Thread):
     def run(self):
 
         self.running = True
-        self.loop = len(self.p0_file)
-        self.loop_count = 0
 
         if self.running:
             
@@ -133,7 +129,7 @@ class Thread_ControlClass(threading.Thread):
                                     if i == 0:
                                         self.Coord.p0[i] = -axis * 1.2
                                     else:
-                                        self.Coord.p0[i] = -axis * 1.2
+                                        self.Coord.p0[i] = axis * 1.2
 
                                     self.Coord.p0[2] = 0.0
                                     self.Coord.p0[3] = 0.0
@@ -142,7 +138,7 @@ class Thread_ControlClass(threading.Thread):
                                         #self.Coord.p0[3] = axis * 1.2
                                         self.Coord.p0[3] = 0
                                     else:
-                                        self.Coord.p0[2] = -axis * 1.2
+                                        self.Coord.p0[2] = axis * 1.2
 
                                     self.Coord.p0[0] = 0.0
                                     self.Coord.p0[1] = 0.0
